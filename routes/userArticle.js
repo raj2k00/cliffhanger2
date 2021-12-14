@@ -4,6 +4,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const fs = require("fs");
 const multer = require("multer");
+const sgTransport = require("nodemailer-sendgrid-transport");
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -24,7 +25,7 @@ var Storage = multer.diskStorage({
 
 var upload = multer({
   storage: Storage,
-}).array("image", 10);
+}).array("image", 20);
 
 router.get("/", (req, res) => {
   res.render("userArticle");
@@ -44,6 +45,7 @@ router.post("/", (req, res) => {
 
       const attach = [];
       const files = req.files;
+      console.log(files);
 
       //   console.log(`attach array object ${attach}`);
       files.forEach((file) => {
@@ -52,19 +54,18 @@ router.post("/", (req, res) => {
           path: `${file.path}`,
         });
       });
-      //   console.log(attach);
 
-      var transporter = nodemailer.createTransport({
-        service: "hotmail",
-        auth: {
-          user: "conquerorraj2000@outlook.com",
-          pass: process.env.PASSWORD,
-        },
-      });
+      const transporter = nodemailer.createTransport(
+        sgTransport({
+          auth: {
+            api_key: process.env.PASSWORD,
+          },
+        })
+      );
 
       var mailOptions = {
-        from: "conquerorraj2000@outlook.com",
-        to: "conquerorraj2626@gmail.com",
+        from: "conquerorraj2626@gmail.com",
+        to: "mohanraj.2k00@gmail.com",
         subject: `${subject} fullname ${fullname}`,
         html: `<p> email : ${email} </br> <h3> headline${text}</h3> </br><h6>${markdown}<h6></p>`,
         attachments: attach,
