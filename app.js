@@ -6,7 +6,7 @@ const multer = require("multer");
 const nodemailer = require("nodemailer");
 const fs = require("fs");
 const path = require("path");
-require('dotenv').config()
+require("dotenv").config();
 
 //requiring mongoose schema
 const Post = require("./models/postmodel");
@@ -44,8 +44,8 @@ app.get("/", async (req, res) => {
   });
 });
 
-app.use('/userArticle',userArticle);
-app.use('/compose-new-article',compose);
+app.use("/userArticle", userArticle);
+app.use("/compose-new-article", compose);
 // app.use('/article',posts);
 app.get("/:reqid", (req, res) => {
   const id = req.params.reqid;
@@ -58,6 +58,6 @@ app.get("/:reqid", (req, res) => {
     }
   });
 });
+const port = process.env.PORT || 3000;
 
-
-app.listen(process.env.PORT || 3000, () => console.log("server started on port 3000"));
+app.listen(port, () => console.log("server started successfully :)"));

@@ -1,9 +1,10 @@
-require('dotenv').config()
+require("dotenv").config();
 const nodemailer = require("nodemailer");
 const express = require("express");
 const bodyParser = require("body-parser");
 const fs = require("fs");
 const multer = require("multer");
+
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
@@ -54,9 +55,9 @@ router.post("/", (req, res) => {
       //   console.log(attach);
 
       var transporter = nodemailer.createTransport({
-        service: 'hotmail',
+        service: "hotmail",
         auth: {
-          user: 'conquerorraj2000@outlook.com',
+          user: "conquerorraj2000@outlook.com",
           pass: process.env.PASSWORD,
         },
       });
@@ -75,7 +76,8 @@ router.post("/", (req, res) => {
         } else {
           console.log("Email sent: " + info.response);
           console.log(files);
-          res.send("Success !!");
+          console.log("Success !!");
+          res.redirect("/");
         }
       });
     }
