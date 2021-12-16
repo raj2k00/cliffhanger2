@@ -64,3 +64,15 @@ window.addEventListener('DOMContentLoaded', () => {
         scrollPos = currentTop;
     })
 });
+
+const loading_btn = document.getElementById("js_send")
+const form_submit = document.getElementById("email_form")
+const select_text = document.getElementById("form-submit-text")
+
+form_submit.onsubmit = function changingAnime() {
+    select_text.classList.remove("fa-upload")
+    select_text.classList.add('fa', 'fa-spinner', 'fa-spin')
+    loading_btn.style.setProperty("cursor","not-allowed")
+    loading_btn.style.setProperty("pointer-events","none")
+    loading_btn.textContent = "Sending...";
+}

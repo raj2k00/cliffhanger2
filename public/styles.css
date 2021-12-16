@@ -630,6 +630,10 @@ a:visited {
   transition: all 0.2s ease;
 }
 
+.form-submit-text{
+  margin-right:10px;
+}
+
 /* /////////// INDIVIDUAL CONTAINER ///////// */
 .post {
   background-color: rgb(252, 252, 252);
@@ -720,6 +724,42 @@ a:visited {
 .footer-contact span {
   font-size: 1.5rem;
   padding-left: 1rem;
+}
+
+.success{
+  padding: 28rem 0 30rem 0;
+  text-align: center; 
+}
+.success-h1{
+  font-size: 6rem;
+  font-family: 'Dancing Script';
+  padding-bottom: 2rem;
+}
+.success-h2{
+  font-size: 2rem;
+  font-weight: 400;
+  padding-bottom: 2rem;
+}
+.success-action{
+  margin-top: 2rem;
+}
+.success-action a:not(:last-child){
+  margin-right: 4rem;
+}
+.success-links{
+  padding: 1.3rem;
+  background-color: yellow;
+  border-radius: 2px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: black;
+  border: 2px solid transparent;
+  transition: all .3s ease-in;
+}
+.success-links:hover{
+  background-color: transparent;
+  border: 2px solid yellow;
+  transition: all .3s ease-in;
 }
 
 @media only screen and (max-width: 425px) {
@@ -850,5 +890,8 @@ a:visited {
     font-size: 3rem;
     left: 1%;
     padding: 0 1rem;
+  }
+  .success-links{
+    font-size: 1rem;
   }
 }

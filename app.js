@@ -19,7 +19,9 @@ const posts = require("./routes/posts");
 const app = express();
 
 app.set("view engine", "ejs");
-
+app.get("/success",(req,res)=>{
+  res.render('formSubmitted')
+})
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
 
