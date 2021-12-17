@@ -1,0 +1,25 @@
+<%- include('partials/header') %> 
+
+    <section class="post">
+      <div class="post-container">
+        
+        <h1>
+          <%= Post.title %> 
+        </h1>
+        <h2 class="post-subtitle"> <%= Post.subtitle %> </h2>
+        <p class="blog-created-at">
+          posted by <%= Post.fname %><%= Post.lname %> at
+          <span class="time-stamp">
+            <%= Post.createdAt.toLocaleDateString() %></span
+          >
+        </p>
+        <img  
+              src="data:image/<%=Post.img.contentType%>;base64,<%=Post.img.data.toString('base64')%>"
+              alt="Post-image"/>
+
+        <%- Post.sanitizedHtml %> 
+
+      </div>
+    </section>
+
+<%- include('partials/footer') %> 
